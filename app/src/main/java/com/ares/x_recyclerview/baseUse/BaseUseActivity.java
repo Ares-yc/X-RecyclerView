@@ -40,7 +40,7 @@ public class BaseUseActivity extends AppCompatActivity {
         mAdapter = new BaseUseAdapter(this,mDatas);
         contentRv.setLayoutManager(new LinearLayoutManager(this));
         contentRv.setAdapter(mAdapter);
-        contentRv.addItemDecoration(linearLayoutDecoration);
+        contentRv.addItemDecoration(gridLayoutDecoration);
     }
 
     private void initListener() {
@@ -72,7 +72,7 @@ public class BaseUseActivity extends AppCompatActivity {
                 contentRv.removeItemDecoration(linearLayoutDecoration);
                 contentRv.removeItemDecoration(gridLayoutDecoration);
                 contentRv.setLayoutManager(new LinearLayoutManager(this));
-                contentRv.addItemDecoration(linearLayoutDecoration);
+                contentRv.addItemDecoration(gridLayoutDecoration);
                 break;
         }
         return true;
