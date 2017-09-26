@@ -17,8 +17,7 @@ public class BaseUseActivity extends AppCompatActivity {
 
     private RecyclerView contentRv;
     private BaseUseAdapter mAdapter;
-    private LinearLayoutItemDecoration linearLayoutDecoration;
-    private GridLayoutItemDecoration gridLayoutDecoration;
+    private BaseUseItemDecoration baseUseItemDecoration;
     private List<String> mDatas;
 
     @Override
@@ -33,14 +32,13 @@ public class BaseUseActivity extends AppCompatActivity {
         contentRv = (RecyclerView) findViewById(R.id.rv_activity_base_use_content);
 
         mDatas = new ArrayList<>();
-        linearLayoutDecoration = new LinearLayoutItemDecoration(this,R.drawable.item_drawable01);
-        gridLayoutDecoration = new GridLayoutItemDecoration(this,R.drawable.item_drawable01);
+        baseUseItemDecoration = new BaseUseItemDecoration(this,R.drawable.item_drawable01);
 
         initData();
         mAdapter = new BaseUseAdapter(this,mDatas);
         contentRv.setLayoutManager(new LinearLayoutManager(this));
         contentRv.setAdapter(mAdapter);
-        contentRv.addItemDecoration(gridLayoutDecoration);
+        contentRv.addItemDecoration(baseUseItemDecoration);
     }
 
     private void initListener() {
@@ -63,16 +61,14 @@ public class BaseUseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.id_action_gridview:
-                contentRv.removeItemDecoration(linearLayoutDecoration);
-                contentRv.removeItemDecoration(gridLayoutDecoration);
+                contentRv.removeItemDecoration(baseUseItemDecoration);
                 contentRv.setLayoutManager(new GridLayoutManager(BaseUseActivity.this,3));
-                contentRv.addItemDecoration(gridLayoutDecoration);
+                contentRv.addItemDecoration(baseUseItemDecoration);
                 break;
             case R.id.id_action_listview:
-                contentRv.removeItemDecoration(linearLayoutDecoration);
-                contentRv.removeItemDecoration(gridLayoutDecoration);
+                contentRv.removeItemDecoration(baseUseItemDecoration);
                 contentRv.setLayoutManager(new LinearLayoutManager(this));
-                contentRv.addItemDecoration(gridLayoutDecoration);
+                contentRv.addItemDecoration(baseUseItemDecoration);
                 break;
         }
         return true;
