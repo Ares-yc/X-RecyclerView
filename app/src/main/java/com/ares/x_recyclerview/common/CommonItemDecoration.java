@@ -1,4 +1,4 @@
-package com.ares.x_recyclerview.baseUse;
+package com.ares.x_recyclerview.common;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -14,11 +14,11 @@ import android.view.View;
  * Created by Ares on 2017/9/24.
  */
 
-public class BaseUseItemDecoration extends RecyclerView.ItemDecoration{
+public class CommonItemDecoration extends RecyclerView.ItemDecoration{
 
     private Drawable mDivide;
 
-    public BaseUseItemDecoration(Context mCotnext, int resId){
+    public CommonItemDecoration(Context mCotnext, int resId){
         mDivide = ContextCompat.getDrawable(mCotnext,resId);
     }
 
@@ -80,7 +80,7 @@ public class BaseUseItemDecoration extends RecyclerView.ItemDecoration{
 
     //是否是最后一行
     private boolean isLastRow(View view, RecyclerView parent) {
-        // ( position - 1 ) > ( 行数 - 1 ) * 列数
+        // ( position + 1 ) > ( 行数 - 1 ) * 列数
         return (getPosition(view) + 1) > (getRowCount(parent) - 1) * getSpanCount(parent);
     }
 

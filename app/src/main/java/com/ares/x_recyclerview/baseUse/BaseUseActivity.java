@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ares.x_recyclerview.R;
+import com.ares.x_recyclerview.common.CommonItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class BaseUseActivity extends AppCompatActivity {
 
     private RecyclerView contentRv;
     private BaseUseAdapter mAdapter;
-    private BaseUseItemDecoration baseUseItemDecoration;
+    private CommonItemDecoration commonItemDecoration;
     private List<String> mDatas;
 
     @Override
@@ -32,13 +33,13 @@ public class BaseUseActivity extends AppCompatActivity {
         contentRv = (RecyclerView) findViewById(R.id.rv_activity_base_use_content);
 
         mDatas = new ArrayList<>();
-        baseUseItemDecoration = new BaseUseItemDecoration(this,R.drawable.item_drawable01);
+        commonItemDecoration = new CommonItemDecoration(this,R.drawable.item_drawable01);
 
         initData();
-        mAdapter = new BaseUseAdapter(this,mDatas);
+        mAdapter = new BaseUseAdapter(this,mDatas,R.layout.item_home);
         contentRv.setLayoutManager(new LinearLayoutManager(this));
         contentRv.setAdapter(mAdapter);
-        contentRv.addItemDecoration(baseUseItemDecoration);
+        contentRv.addItemDecoration(commonItemDecoration);
     }
 
     private void initListener() {
@@ -61,14 +62,14 @@ public class BaseUseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.id_action_gridview:
-                contentRv.removeItemDecoration(baseUseItemDecoration);
+                contentRv.removeItemDecoration(commonItemDecoration);
                 contentRv.setLayoutManager(new GridLayoutManager(BaseUseActivity.this,3));
-                contentRv.addItemDecoration(baseUseItemDecoration);
+                contentRv.addItemDecoration(commonItemDecoration);
                 break;
             case R.id.id_action_listview:
-                contentRv.removeItemDecoration(baseUseItemDecoration);
+                contentRv.removeItemDecoration(commonItemDecoration);
                 contentRv.setLayoutManager(new LinearLayoutManager(this));
-                contentRv.addItemDecoration(baseUseItemDecoration);
+                contentRv.addItemDecoration(commonItemDecoration);
                 break;
         }
         return true;
